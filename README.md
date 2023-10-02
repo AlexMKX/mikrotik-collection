@@ -1,3 +1,3 @@
-# Ansible Collection - alexmkx.proxmox
+# Ansible Collection - alexmkx.mikrotik
 
 Documentation for the collection.
