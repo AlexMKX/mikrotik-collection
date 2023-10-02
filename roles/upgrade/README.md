@@ -15,7 +15,7 @@ used to upgrade mikrotik devices
   tasks:
     - name: Upgrade Mikrotik
       include_role:
-        name: upgrade
+        name: alexmkx.mikrotik.upgrade
       vars:
         hostname: "{{ inventory_hostname }}"
         username: "{{ ansible_user }}"
