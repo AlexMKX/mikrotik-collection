@@ -16,16 +16,16 @@ readme: README.md
 # A list of the collection's content authors. Can be just the name or in the format 'Full Name <email> (url)
 # @nicks:irc/im.site#channel'
 authors:
-- Alexander K <ansible-alex@xxl.cx>
+  - Alexander K <ansible-alex@xxl.cx>
 
 description: Set of roles to manage mikrotik devices
 
 license:
-- GPL-2.0-or-later
+  - GPL-2.0-or-later
 
 # A list of tags you want to associate with the collection for indexing/searching. A tag name has the same character
 # requirements as 'namespace' and 'name'
-tags: [mikrotik, routeros, mikrotik-routeros]
+tags: [ mikrotik, routeros ]
 
 
 # The URL of the originating SCM repository
