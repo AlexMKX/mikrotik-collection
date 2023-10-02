@@ -1,0 +1,62 @@
+- community.routeros.api:
+    path: "system package update"
+    cmd: "set channel={{upgrade_channel}}"
+  name: "Set upgrade channel to {{upgrade_channel}}"
+
+- community.routeros.api:
+    path: "system resource"
+    cmd: "print"
+  register: rb_output
+- set_fact:
+    routerboard: "{{(rb_output.msg | first )['board-name'] not in ('CHR')}}"
+- community.routeros.api:
+    path: "system package update"
+    cmd: "check-for-updates"
+  register: check_output
+  name: "check for updates"
+
+- name: upgrade packages
+  block:
+    - community.routeros.api:
+        path: "system package update"
+        cmd: "install"
+      register: install_output
+      name: "install updates"
+    - pause: seconds=10
+    - community.routeros.api:
+        path: "system resource"
+        cmd: "print"
+      register: resoruce_output
+      ignore_errors: true
+      retries: 50
+      name: "wait for reboot after packages update"
+      until: not resoruce_output.failed
+  when: (check_output.msg  | last).status == "New version is available"
+
+- name: upgrade routerboard firmware
+  block:
+    - community.routeros.api:
+        path: "system routerboard"
+        cmd: "print"
+      register: export_output
+      name: "Check for firmware update"
+    - block:
+        - community.routeros.api:
+            path: "system"
+            cmd: "reboot"
+          when: (export_output.msg|first)['current-firmware']  != (export_output.msg|first)['upgrade-firmware']
+          name: "apply the firmware update"
+        - community.routeros.api:
+            path: "system routerboard"
+            cmd: "print"
+          register: export_output
+          retries: 50
+          ignore_errors: true
+          until: not export_output.failed
+          delay: 10
+          name: "wait for reboot after firmware update"
+        - fail:
+            msg: "Routerboard firmware update failed export result : {{export_output}}"
+          when: (export_output.msg|first)['current-firmware']  != (export_output.msg|first)['upgrade-firmware']
+      when: (export_output.msg|first).routerboard== true
+  when: routerboard == true
