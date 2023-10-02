@@ -5,7 +5,7 @@
 namespace: alexmkx
 
 # The name of the collection. Has the same character restrictions as 'namespace'
-name: pveapi
+name: mikrotik
 
 # The version of the collection. Must be compatible with semantic versioning
 version: 1.0.12
@@ -18,7 +18,7 @@ readme: README.md
 authors:
 - Alexander K <ansible-alex@xxl.cx>
 
-description: Set of roles and modules to manage Proxmox VE
+description: Set of roles to manage mikrotik devices
 
 license:
 - GPL-2.0-or-later
@@ -29,16 +29,17 @@ tags: [proxmox, pve, pbs, pmg]
 
 
 # The URL of the originating SCM repository
-repository: https://github.com/AlexMKX/pveapi
+repository: https://github.com/AlexMKX/mikrotik-collection
 
 # The URL to any online docs
-documentation: https://github.com/AlexMKX/pveapi
+documentation: https://github.com/AlexMKX/mikrotik-collection
 
 # The URL to the homepage of the collection/project
-homepage: https://github.com/AlexMKX/pveapi
+homepage: https://github.com/AlexMKX/mikrotik-collection
 
 # The URL to the collection issue tracker
-issues: https://github.com/AlexMKX/pveapi/issues
+issues: https://github.com/AlexMKX/mikrotik-collection/issues
+
 
 
 
