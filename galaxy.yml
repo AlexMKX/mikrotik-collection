@@ -8,7 +8,7 @@ namespace: alexmkx
 name: mikrotik
 
 # The version of the collection. Must be compatible with semantic versioning
-version: 1.0.12
+version: 1.0.13
 
 # The path to the Markdown (.md) readme file. This path is relative to the root of the collection
 readme: README.md
@@ -25,7 +25,7 @@ license:
 
 # A list of tags you want to associate with the collection for indexing/searching. A tag name has the same character
 # requirements as 'namespace' and 'name'
-tags: [proxmox, pve, pbs, pmg]
+tags: [mikrotik, routeros, mikrotik-routeros]
 
 
 # The URL of the originating SCM repository
